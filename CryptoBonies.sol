@@ -12,9 +12,9 @@
 **
 **    2% - Marketing: this will be sent straight to the tax generated marketing wallet as TEMP. 
 **
-**    0% - Charity: this will be sent to a charity wallet as TEMP
+**    2% - Charity: this will be sent to a charity wallet as TEMP (this charity wallet is finally used for the liquidity fees, in order to be dispatched in the 4 other chosen chains)
 **
-**    2% - Liquidity pool: this will be sent directly to the liquidity pool as BNB 
+**    0% - Liquidity pool: this will be sent directly to the liquidity pool as BNB (liquidity fees will be put in charity wallet instead)
 **    
 **    10 trillion token burned every 7 days, untlil total supply would be set 100 trillion 
 **
@@ -724,13 +724,13 @@ contract CryptoBonies  is Context, IERC20, Ownable {
     uint256 public _taxFee = 5;                                 // Reflexion/rewards.
     uint256 private _previousTaxFee = _taxFee;
     
-    uint256 public _liquidityFee = 2;
+    uint256 public _liquidityFee = 0;
     uint256 private _previousLiquidityFee = _liquidityFee;          
 
     uint256 public _burnFee = 2;
     uint256 private _previousBurnFee = _burnFee;
 
-    uint256 public _charityFee = 0;
+    uint256 public _charityFee = 2;
     uint256 private _previousCharityFee = _charityFee;
 
     uint256 public _marketingFee = 2;
