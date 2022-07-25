@@ -1097,26 +1097,27 @@ contract CryptoBonies  is Context, IERC20, Ownable {
         if(from != owner() && to != owner())
             require(amount <= _maxTxAmount, "Transfer amount exceeds the maxTxAmount.");
 
-        // is the total supply of token greater than 100 trillion
-        // 10 trillion token will be burned every friday
-        uint256 tokenCurrentTotalSupply = _tTotal;
-        if(tokenCurrentTotalSupply >= (burningTokenCriteria.add(burnTokenEveryWeek)) 
-            && _burnAt <= block.timestamp 
-            && _rOwned[owner()] > burnTokenEveryWeek )
-        {
-            _tTotal = _tTotal.sub(burnTokenEveryWeek);
-            _rOwned[owner()] = _rOwned[owner()].sub(burnTokenEveryWeek);
-            emit Burn(owner(), burnTokenEveryWeek, _burnAt);
-            _burnAt = _burnAt.add(7 days);                                      // 7 days next burn will be after 7 days
-        }    
-        
-        //
-        // while token supply will be 100 trillion burning will be stopped
-        if(tokenCurrentTotalSupply <= burningTokenCriteria) 
-        {
-            _burnFee = 0;
-        }
-        
+        // Progressive burn
+        // // is the total supply of token greater than 100 trillion
+        // // 10 trillion token will be burned every friday
+        // uint256 tokenCurrentTotalSupply = _tTotal;
+        // if(tokenCurrentTotalSupply >= (burningTokenCriteria.add(burnTokenEveryWeek))
+        //     && _burnAt <= block.timestamp
+        //     && _rOwned[owner()] > burnTokenEveryWeek )
+        // {
+        //     _tTotal = _tTotal.sub(burnTokenEveryWeek);
+        //     _rOwned[owner()] = _rOwned[owner()].sub(burnTokenEveryWeek);
+        //     emit Burn(owner(), burnTokenEveryWeek, _burnAt);
+        //     _burnAt = _burnAt.add(7 days);                                      // 7 days next burn will be after 7 days
+        // }
+
+        // //
+        // // while token supply will be 100 trillion burning will be stopped
+        // if(tokenCurrentTotalSupply <= burningTokenCriteria)
+        // {
+        //     _burnFee = 0;
+        // }
+
         // is the token balance of this contract address over the min number of
         // tokens that we need to initiate a swap + liquidity lock?
         // also, don't get caught in a circular liquidity event.
