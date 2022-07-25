@@ -721,10 +721,10 @@ contract CryptoBonies  is Context, IERC20, Ownable {
     uint8 private _decimals = 18;
     
     // 6% Fees Distribution
-    uint256 public _taxFee = 6;                                 // Reflexion/rewards.
+    uint256 public _taxFee = 2;                                 // Reflexion/rewards.
     uint256 private _previousTaxFee = _taxFee;
     
-    uint256 public _liquidityFee = 2;
+    uint256 public _liquidityFee = 0;
     uint256 private _previousLiquidityFee = _liquidityFee;          
 
     uint256 public _burnFee = 0;
@@ -735,7 +735,7 @@ contract CryptoBonies  is Context, IERC20, Ownable {
 
     uint256 public _marketingFee = 2;
     uint256 private _previousMarketingFee = _marketingFee;
-    // END - 10% Fees Distribution
+    // END - 6% Fees Distribution
 
     IUniswapV2Router02 public immutable uniswapV2Router;
     address public immutable uniswapV2Pair;
