@@ -4,11 +4,11 @@
 
 /**
 **    
-**    Total tax - 10%
+**    Total tax - 6%
 **
 **    2% - Reflections: to be distributed equally amongst all holders of TEMP only on selling of TEMP tokens and not on wallet to wallet transfers. 
 **
-**    2% - Burned: sent directly to the burn address as TEMP. This burn function will stop when total supply of TEMP = 100 trillion.  Tax will now total only 8% as of that point. 
+**    0% - Burned: sent directly to the burn address as TEMP. This burn function will stop when total supply of TEMP = 100 trillion.  Tax will now total only 8% as of that point. 
 **
 **    2% - Marketing: this will be sent straight to the tax generated marketing wallet as TEMP. 
 **
@@ -720,14 +720,14 @@ contract CryptoBonies  is Context, IERC20, Ownable {
     string private _symbol = "BONIES";
     uint8 private _decimals = 18;
     
-    // 10% Fees Distribution
-    uint256 public _taxFee = 5;                                 // Reflexion/rewards.
+    // 6% Fees Distribution
+    uint256 public _taxFee = 6;                                 // Reflexion/rewards.
     uint256 private _previousTaxFee = _taxFee;
     
-    uint256 public _liquidityFee = 0;
+    uint256 public _liquidityFee = 2;
     uint256 private _previousLiquidityFee = _liquidityFee;          
 
-    uint256 public _burnFee = 2;
+    uint256 public _burnFee = 0;
     uint256 private _previousBurnFee = _burnFee;
 
     uint256 public _charityFee = 2;
